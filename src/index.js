@@ -1,26 +1,26 @@
 import './style.css';
+import tasksHtml from './modules/innerhtml.js';
 
 const form = document.querySelector(".form");
 const inputForm = document.querySelector(".input-form");
-const submitBtn = document.querySelector(".submit");
 const allTasks = document.querySelector(".tasks");
 
 let todoTasks = []; 
 
-const tasksHtml = ({index, description}) => `
-<li class="draggable list" id="${index}" draggable="true">
-    <input type="checkbox" name="task" >
-    <input type="text"  class="input-list" value="${description}">
-    <div>
-        <i class="material-icons dots">
-            more_vert
-        </i>
-        <i class="material-icons delete">
-            delete
-        </i>
-    </div>
-</li>
-`
+// const tasksHtml = ({index, description}) => `
+// <li class="draggable list" id="${index}" draggable="true">
+//     <input type="checkbox" name="task" >
+//     <input type="text"  class="input-list" value="${description}">
+//     <div>
+//         <i class="material-icons dots">
+//             more_vert
+//         </i>
+//         <i class="material-icons delete">
+//             delete
+//         </i>
+//     </div>
+// </li>
+// `
 
 form.addEventListener("submit", (e)=>{
   e.preventDefault()
