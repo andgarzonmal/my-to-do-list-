@@ -6,20 +6,15 @@ const inputForm = document.querySelector('.input-form');
 const allTasks = document.querySelector('.tasks');
 
 const todoTasks = [{
-    index: 0,
-    description: 'Task 1',
-    completed: false,
-  },
-  {
-    index: 1,
-    description: 'Task 2',
-    completed: false,
-  },];
-
-document.addEventListener('DOMContentLoaded', ()=> {
-  addTask();
-  createTasks();
-})
+  index: 0,
+  description: 'Task 1',
+  completed: false,
+},
+{
+  index: 1,
+  description: 'Task 2',
+  completed: false,
+}];
 
 const addTask = () => {
   if (inputForm.value.trim() === '') {
@@ -43,6 +38,11 @@ const createTasks = () => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
   });
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  addTask();
+  createTasks();
+});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
