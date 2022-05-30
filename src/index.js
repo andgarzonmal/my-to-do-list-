@@ -5,22 +5,22 @@ const form = document.querySelector('.form');
 const inputForm = document.querySelector('.input-form');
 const allTasks = document.querySelector('.tasks');
 
-const todoTasks = [];
+const todoTasks = [{
+  index: 0,
+  description: 'Task 1',
+  completed: false,
+},
+{
+  index: 1,
+  description: 'Task 2',
+  completed: false,
+},];
 
-// const tasksHtml = ({index, description}) => `
-// <li class="draggable list" id="${index}" draggable="true">
-//     <input type="checkbox" name="task" >
-//     <input type="text"  class="input-list" value="${description}">
-//     <div>
-//         <i class="material-icons dots">
-//             more_vert
-//         </i>
-//         <i class="material-icons delete">
-//             delete
-//         </i>
-//     </div>
-// </li>
-// `
+console.log(todoTasks)
+document.addEventListener('DOMContentLoaded', ()=> {
+  addTask();
+  createTasks();
+})
 
 const addTask = () => {
   if (inputForm.value.trim() === '') {
@@ -28,12 +28,13 @@ const addTask = () => {
   }
 
   const task = {
-    index: Date.now(),
+    index: todoTasks.length,
     description: inputForm.value,
     completed: false,
   };
 
   todoTasks.push(task);
+  console.log(todoTasks)
   inputForm.value = '';
   inputForm.focus();
 };
