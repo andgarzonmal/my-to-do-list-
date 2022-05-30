@@ -6,17 +6,16 @@ const inputForm = document.querySelector('.input-form');
 const allTasks = document.querySelector('.tasks');
 
 const todoTasks = [{
-  index: 0,
-  description: 'Task 1',
-  completed: false,
-},
-{
-  index: 1,
-  description: 'Task 2',
-  completed: false,
-},];
+    index: 0,
+    description: 'Task 1',
+    completed: false,
+  },
+  {
+    index: 1,
+    description: 'Task 2',
+    completed: false,
+  },];
 
-console.log(todoTasks)
 document.addEventListener('DOMContentLoaded', ()=> {
   addTask();
   createTasks();
@@ -34,7 +33,6 @@ const addTask = () => {
   };
 
   todoTasks.push(task);
-  console.log(todoTasks)
   inputForm.value = '';
   inputForm.focus();
 };
