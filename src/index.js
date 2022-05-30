@@ -1,11 +1,11 @@
 import './style.css';
 import tasksHtml from './modules/innerhtml.js';
 
-const form = document.querySelector(".form");
-const inputForm = document.querySelector(".input-form");
-const allTasks = document.querySelector(".tasks");
+const form = document.querySelector('.form');
+const inputForm = document.querySelector('.input-form');
+const allTasks = document.querySelector('.tasks');
 
-let todoTasks = []; 
+const todoTasks = [];
 
 // const tasksHtml = ({index, description}) => `
 // <li class="draggable list" id="${index}" draggable="true">
@@ -22,31 +22,31 @@ let todoTasks = [];
 // </li>
 // `
 
-form.addEventListener("submit", (e)=>{
-  e.preventDefault()
-  addTask()
-  createTasks()
-})
-
-const addTask = e => {
-  if(inputForm.value.trim() === '') {
-    return
+const addTask = () => {
+  if (inputForm.value.trim() === '') {
+    return;
   }
 
   const task = {
     index: Date.now(),
     description: inputForm.value,
-    completed: false
-  }
+    completed: false,
+  };
 
   todoTasks.push(task);
-  inputForm.value='';
+  inputForm.value = '';
   inputForm.focus();
-}
+};
 
 const createTasks = () => {
-  allTasks.innerHTML ='';
-  todoTasks.forEach(task => {
-    allTasks.insertAdjacentHTML("beforeend",tasksHtml(task))
-  })  
-}
+  allTasks.innerHTML = '';
+  todoTasks.forEach((task) => {
+    allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
+  });
+};
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addTask();
+  createTasks();
+});

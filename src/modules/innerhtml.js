@@ -1,4 +1,4 @@
-const tasksHtml = ({index, description}) => `
+const tasksHtml = ({ index, description }) => `
 <li class="draggable list" id="${index}" draggable="true">
     <input type="checkbox" name="task" >
     <input type="text"  class="input-list" value="${description}">
@@ -11,6 +11,6 @@ const tasksHtml = ({index, description}) => `
         </i>
     </div>
 </li>
-`
+`;
 
-export default tasksHtml
+export default tasksHtml;
