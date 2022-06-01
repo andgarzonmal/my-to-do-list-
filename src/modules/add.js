@@ -24,7 +24,7 @@ export const addTask = (arr) => {
   }
 
   const task = {
-    index: arr.length,
+    index: arr.length + 1,
     description: inputForm.value,
     completed: false,
   };
@@ -38,7 +38,7 @@ export const createTasks = (todoTasks, allTasks) => {
   allTasks.innerHTML = '';
 
   for (let i = 0; i < todoTasks.length; i += 1) {
-    todoTasks[i].index = i;
+    todoTasks[i].index = i+1;
   }
 
   todoTasks.forEach((task) => {
