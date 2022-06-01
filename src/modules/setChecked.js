@@ -7,4 +7,4 @@ const setChecked = (arr) => {
     } 
   };
   
-  export default setChecked;
+export default setChecked;
