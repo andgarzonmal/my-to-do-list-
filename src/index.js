@@ -3,78 +3,12 @@ import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
 import { tasksHtml, addTask, createTasks} from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
+import { cleardelete, saveChanges } from './modules/cleardelSave.js';
 
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
 let todoTasks = [];
-
-
-// // ✔️FUNCION✔️
-// const addTask = () => {
-//   if (inputForm.value.trim() === '') {
-//     return;
-//   }
-
-//   if(todoTasks.some(task => task.description === inputForm.value )){
-//     alert('task already added');
-//     return 
-//   }
-
-//   const task = {
-//     index: todoTasks.length,
-//     description: inputForm.value,
-//     completed: false,
-//   };
-
-//   todoTasks.push(task);
-//   inputForm.value = '';
-//   inputForm.focus();
-// };
-
-// // ✔️FUNCION✔️
-// const createTasks = () => {
-//   allTasks.innerHTML = '';
-  
-//   for(let i=0; i<todoTasks.length; i++){
-//     todoTasks[i].index=i
-//   }
-  
-//   todoTasks.forEach((task) => {
-//     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
-//   });
-
-//   localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-// };
-
-// ✔️FUNCION✔️
-// const changeIcon = (todoTasks) => {
-//   const allDots=document.querySelectorAll('.dots')
-//   const btnDelete=document.querySelectorAll('.delete')
-//   for( let i=0; i<todoTasks.length; i++){
-//     allDots[i].addEventListener('click', ()=> {
-//       allDots[i].classList.remove('dots')
-//       allDots[i].classList.add('deletedot')
-//       btnDelete[i].style.display='unset'  
-//     }) 
-//   }
-// }
-
-// ✔️FUNCION✔️
-const cleardelete = (e) =>{
-  const dota = document.querySelectorAll('.deletedot')
-  const toDelete = document.querySelectorAll('.delete')
-  if(e.target.classList.contains('deletedot') || e.target.classList.contains('delete')){
-    return
-  } else 
-  dota.forEach(dot => {
-    dot.classList.remove('deletedot');
-    dot.classList.add('dots')
-  })
-  toDelete.forEach(element =>  element.style.display="none")
-}
-
-// ✔️FUNCION✔️
 
 const del = (e) => {
   if(e.target.classList.contains('delete')){
@@ -89,8 +23,6 @@ const del = (e) => {
   }
 }
 
-
-// ✔️FUNCION✔️
 const clearAll = (e) => {
   if(e.target.classList.contains('clear')){
     const allToDelete = document.querySelectorAll('.list')
@@ -107,18 +39,6 @@ const clearAll = (e) => {
   }
 }
 
-// ✔️FUNCION✔️
-
-const saveChanges = (e) => {
-  if(e.target.classList.contains('input-list')){
-    const inputList = Array.from(document.querySelectorAll('.input-list'))
-    todoTasks[inputList.indexOf(e.target)].description = e.target.value
-    localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-  }
-} 
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addTask(todoTasks);
@@ -132,13 +52,13 @@ allTasks.addEventListener('change', (e) => {
 });
 
 allTasks.addEventListener('input',(e) => {
-  saveChanges(e)
+  saveChanges(e,todoTasks)
 })
 
 
 document.addEventListener("click", (e) => {
   cleardelete(e)
-  clearAll(e)
+  clearAll(e,todoTasks)
   del(e)
 })
 
