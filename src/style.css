@@ -107,7 +107,7 @@ main {
 }
 
 .deletedot {
-  display: none
+  display: none;
 }
 
 .check:checked + .input-list {

@@ -1,7 +1,7 @@
 import './style.css';
 import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
-import { tasksHtml, addTask, createTasks} from './modules/add.js';
+import { tasksHtml, addTask, createTasks } from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
 import { cleardelete, saveChanges } from './modules/cleardelSave.js';
 
@@ -11,39 +11,38 @@ const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
 let todoTasks = [];
 
 const del = (e) => {
-  if(e.target.classList.contains('delete')){
-    let deletebtns = Array.from(document.querySelectorAll('.delete'))
-    console.log(deletebtns.indexOf(e.target))
-    todoTasks=todoTasks.filter(x=>x.index !== deletebtns.indexOf(e.target));  
-    e.target.parentNode.remove()
-    for(let i=0; i<todoTasks.length; i++){
-      todoTasks[i].index=i
+  if (e.target.classList.contains('delete')) {
+    const deletebtns = Array.from(document.querySelectorAll('.delete'));
+    todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target));
+    e.target.parentNode.remove();
+    for (let i = 0; i < todoTasks.length; i += 1) {
+      todoTasks[i].index = i;
     }
-    localStorage.setItem('todoTasks', JSON.stringify(todoTasks))
+    localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
-}
+};
 
 const clearAll = (e) => {
-  if(e.target.classList.contains('clear')){
-    const allToDelete = document.querySelectorAll('.list')
-    allToDelete.forEach(toDelete => {
-      if(toDelete.childNodes[1].checked){
-        toDelete.remove()
-        todoTasks=todoTasks.filter(x=>x.completed !== true)
+  if (e.target.classList.contains('clear')) {
+    const allToDelete = document.querySelectorAll('.list');
+    allToDelete.forEach((toDelete) => {
+      if (toDelete.childNodes[1].checked) {
+        toDelete.remove();
+        todoTasks = todoTasks.filter((x) => x.completed !== true);
       }
-      for(let i=0; i<todoTasks.length; i++){
-        todoTasks[i].index=i
+      for (let i = 0; i < todoTasks.length; i += 1) {
+        todoTasks[i].index = i;
       }
       localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-    })  
+    });
   }
-}
+};
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addTask(todoTasks);
   createTasks(todoTasks, allTasks);
-  changeIcon(todoTasks)
+  changeIcon(todoTasks);
 });
 
 allTasks.addEventListener('change', (e) => {
@@ -51,17 +50,15 @@ allTasks.addEventListener('change', (e) => {
   setChecked(todoTasks);
 });
 
-allTasks.addEventListener('input',(e) => {
-  saveChanges(e,todoTasks)
-})
+allTasks.addEventListener('input', (e) => {
+  saveChanges(e, todoTasks);
+});
 
-
-document.addEventListener("click", (e) => {
-  cleardelete(e)
-  clearAll(e,todoTasks)
-  del(e)
-})
-
+document.addEventListener('click', (e) => {
+  cleardelete(e);
+  clearAll(e, todoTasks);
+  del(e);
+});
 
 if (savedLists !== null) {
   todoTasks = savedLists;

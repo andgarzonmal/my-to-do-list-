@@ -18,9 +18,9 @@ export const addTask = (arr) => {
     return;
   }
 
-  if(arr.some(task => task.description === inputForm.value )){
+  if (arr.some((task) => task.description === inputForm.value)) {
     alert('task already added');
-    return 
+    return;
   }
 
   const task = {
@@ -36,15 +36,14 @@ export const addTask = (arr) => {
 
 export const createTasks = (todoTasks, allTasks) => {
   allTasks.innerHTML = '';
-  
-  for(let i=0; i<todoTasks.length; i++){
-    todoTasks[i].index=i
+
+  for (let i = 0; i < todoTasks.length; i += 1) {
+    todoTasks[i].index = i;
   }
-  
+
   todoTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
   });
 
   localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
 };
-
