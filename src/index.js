@@ -1,7 +1,9 @@
 import './style.css';
 import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
-import { tasksHtml, addTask} from './modules/add.js';
+import { tasksHtml, addTask, createTasks} from './modules/add.js';
+import changeIcon from './modules/changeIcon.js';
+
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
@@ -30,33 +32,33 @@ let todoTasks = [];
 //   inputForm.focus();
 // };
 
-// ✔️FUNCION✔️
-const createTasks = () => {
-  allTasks.innerHTML = '';
+// // ✔️FUNCION✔️
+// const createTasks = () => {
+//   allTasks.innerHTML = '';
   
-  for(let i=0; i<todoTasks.length; i++){
-    todoTasks[i].index=i
-  }
+//   for(let i=0; i<todoTasks.length; i++){
+//     todoTasks[i].index=i
+//   }
   
-  todoTasks.forEach((task) => {
-    allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
-  });
+//   todoTasks.forEach((task) => {
+//     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
+//   });
 
-  localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-};
+//   localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
+// };
 
 // ✔️FUNCION✔️
-const changeIcon = (arr) => {
-  const allDots=document.querySelectorAll('.dots')
-  const btnDelete=document.querySelectorAll('.delete')
-  for( let i=0; i<arr.length; i++){
-    allDots[i].addEventListener('click', ()=> {
-      allDots[i].classList.remove('dots')
-      allDots[i].classList.add('deletedot')
-      btnDelete[i].style.display='unset'  
-    }) 
-  }
-}
+// const changeIcon = (todoTasks) => {
+//   const allDots=document.querySelectorAll('.dots')
+//   const btnDelete=document.querySelectorAll('.delete')
+//   for( let i=0; i<todoTasks.length; i++){
+//     allDots[i].addEventListener('click', ()=> {
+//       allDots[i].classList.remove('dots')
+//       allDots[i].classList.add('deletedot')
+//       btnDelete[i].style.display='unset'  
+//     }) 
+//   }
+// }
 
 // ✔️FUNCION✔️
 const cleardelete = (e) =>{
@@ -120,7 +122,7 @@ const saveChanges = (e) => {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   addTask(todoTasks);
-  createTasks();
+  createTasks(todoTasks, allTasks);
   changeIcon(todoTasks)
 });
 
