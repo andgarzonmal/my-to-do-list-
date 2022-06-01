@@ -38,7 +38,7 @@ export const createTasks = (todoTasks, allTasks) => {
   allTasks.innerHTML = '';
 
   for (let i = 0; i < todoTasks.length; i += 1) {
-    todoTasks[i].index = i+1;
+    todoTasks[i].index = i + 1;
   }
 
   todoTasks.forEach((task) => {

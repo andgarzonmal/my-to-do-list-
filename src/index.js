@@ -13,10 +13,10 @@ let todoTasks = [];
 const del = (e) => {
   if (e.target.classList.contains('delete')) {
     const deletebtns = Array.from(document.querySelectorAll('.delete'));
-    todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target)+1);
+    todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
     e.target.parentNode.remove();
     for (let i = 0; i < todoTasks.length; i += 1) {
-      todoTasks[i].index = i+1;
+      todoTasks[i].index = i + 1;
     }
     localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
@@ -31,7 +31,7 @@ const clearAll = (e) => {
         todoTasks = todoTasks.filter((x) => x.completed !== true);
       }
       for (let i = 0; i < todoTasks.length; i += 1) {
-        todoTasks[i].index = i+1;
+        todoTasks[i].index = i + 1;
       }
       localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
     });

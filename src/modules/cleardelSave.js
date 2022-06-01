@@ -13,7 +13,7 @@ export const cleardelete = (e) => {
 export const saveChanges = (e, todoTasks) => {
   if (e.target.classList.contains('input-list')) {
     const inputList = Array.from(document.querySelectorAll('.input-list'));
-    todoTasks[inputList.indexOf(e.target)+1].description = e.target.value;
+    todoTasks[inputList.indexOf(e.target) + 1].description = e.target.value;
     localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
 };
