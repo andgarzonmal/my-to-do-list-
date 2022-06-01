@@ -1,47 +1,34 @@
 import './style.css';
 import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
-
+import { tasksHtml, addTask} from './modules/add.js';
 const form = document.querySelector('.form');
-const inputForm = document.querySelector('.input-form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
 let todoTasks = [];
 
-const tasksHtml = ({ index, description }) => `
-<li class="list" id="${index}" draggable="true" data-id="ee" >
-    <input type="checkbox" name="task" class="check" data-asign="${index}" >
-    <input type="text"  class="input-list" value="${description}">
-    <i class="material-icons dots">
-        more_vert
-    </i>
-    <i class="material-icons delete" >
-        delete
-    </i> 
-</li>
-`;
 
-// ✔️FUNCION✔️
-const addTask = () => {
-  if (inputForm.value.trim() === '') {
-    return;
-  }
+// // ✔️FUNCION✔️
+// const addTask = () => {
+//   if (inputForm.value.trim() === '') {
+//     return;
+//   }
 
-  if(todoTasks.some(task => task.description === inputForm.value )){
-    alert('task already added');
-    return 
-  }
+//   if(todoTasks.some(task => task.description === inputForm.value )){
+//     alert('task already added');
+//     return 
+//   }
 
-  const task = {
-    index: todoTasks.length,
-    description: inputForm.value,
-    completed: false,
-  };
+//   const task = {
+//     index: todoTasks.length,
+//     description: inputForm.value,
+//     completed: false,
+//   };
 
-  todoTasks.push(task);
-  inputForm.value = '';
-  inputForm.focus();
-};
+//   todoTasks.push(task);
+//   inputForm.value = '';
+//   inputForm.focus();
+// };
 
 // ✔️FUNCION✔️
 const createTasks = () => {
@@ -132,7 +119,7 @@ const saveChanges = (e) => {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addTask();
+  addTask(todoTasks);
   createTasks();
   changeIcon(todoTasks)
 });
