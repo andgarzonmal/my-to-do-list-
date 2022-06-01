@@ -34,17 +34,17 @@ export const addTask = (arr) => {
   inputForm.focus();
 };
 
-// export const createTasks = () => {
-//   allTasks.innerHTML = '';
+export const createTasks = (todoTasks, allTasks) => {
+  allTasks.innerHTML = '';
   
-//   for(let i=0; i<todoTasks.length; i++){
-//     todoTasks[i].index=i
-//   }
+  for(let i=0; i<todoTasks.length; i++){
+    todoTasks[i].index=i
+  }
   
-//   todoTasks.forEach((task) => {
-//     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
-//   });
+  todoTasks.forEach((task) => {
+    allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
+  });
 
-//   localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-// };
+  localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
+};
 
