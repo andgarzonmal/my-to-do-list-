@@ -1,14 +1,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital@1&family=Lato:ital,wght@0,300;0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   background-color: rgb(0 79 255 / 66%);
   overflow: hidden;
+}
+
+#my-todo-title {
+  margin-bottom: 60px;
+  font-size: 40px;
+  font-family:"Handlee", cursive ;
 }
 
 main {
@@ -23,6 +32,7 @@ main {
   flex-direction: column;
   padding: 15px;
   border-radius: 2%;
+  margin-bottom: 70px;
 }
 
 .autorenew,
@@ -38,6 +48,10 @@ main {
   margin: 0 auto;
   background: white;
   border-bottom: #888 1px solid;
+}
+
+.h-title {
+  font-family: cursive;
 }
 
 .form {
@@ -56,6 +70,11 @@ main {
   border: none;
   font-style: italic;
   width: 90%;
+}
+
+.input-form[type='text'] {
+  font-size: 18px;
+  font-family: 'Handlee', serif;
 }
 
 .input-form:focus {
@@ -102,7 +121,7 @@ main {
 
 .input-list[type='text']{
   font-size: 18px;
-  font-family: 'Gentium Plus', serif;
+  font-family: 'Handlee', serif;
 }
 
 .input-list:focus {
