@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/andgarzonmal/my-to-do-list-/issues"
   },
-  "homepage": "https://github.com/andgarzonmal/my-to-do-list-#readme",
+  "homepage": "https://github.com/andgarzonmal/my-to-do-list-/dist",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.7.1",
