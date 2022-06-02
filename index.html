@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<title>My to Do</title>
+<script defer src="main.js"></script></head>
+<body>
+
+	<h1 id="my-todo-title">✔️ My todo list ✔️</h1>
+	<main>
+		<Header class="header">
+			<h3 class="h-title">Today's To Do</h3>
+			<span class="material-symbols-outlined autorenew">
+				autorenew
+			</span>
+		</Header>
+		
+		<form class="form">
+			<input type="text" placeholder="Add to your list..." class="input-form" autofocus>
+			<button class="material-icons submit" type="submit">
+				keyboard_return
+			</button>
+		</form>
+
+		<ul class="tasks"> </ul>
+		
+		<button type="button" class="clear">
+			clear all completed
+		</button>
+	</main>
+</body>
+</html>
