@@ -1,5 +1,9 @@
 # my-to-do-list-
 keep track of your tasks with this to do list 
+<a href="https://www.loom.com/share/94d16db909964016a1bd084f30697e73">
+    <p>My to Do - 2 June 2022 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/94d16db909964016a1bd084f30697e73-with-play.gif">
+</a>
 
 ## DESCRIPTION
 build a simple HTML list of To Do tasks.
