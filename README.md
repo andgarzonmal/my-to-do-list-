@@ -4,6 +4,10 @@ keep track of your tasks with this to do list
 ## DESCRIPTION
 build a simple HTML list of To Do tasks.
 
+### LIVE DEMO
+
+"https://andgarzonmal.github.io/my-to-do-list-/"
+
 ## BUILT WITH
 - *Visual Studio Code*
 - *ES6*
