@@ -47,3 +47,9 @@ export const createTasks = (todoTasks, allTasks) => {
 
   localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
 };
+
+
+export const getFromLocalStorage = () => {
+  const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
+  return mytasks;
+}
