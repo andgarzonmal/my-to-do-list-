@@ -1,12 +1,16 @@
 import './style.css';
 import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
-import { tasksHtml, addTask, createTasks, getFromLocalStorage } from './modules/add.js';
+import {
+  tasksHtml, addTask, createTasks, getFromLocalStorage,
+} from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
 import { cleardelete, saveChanges } from './modules/cleardelSave.js';
-import { dragStart, dragend, dragOver, arrFromLocalStorage} from './modules/drag.js';
+import {
+  dragStart, dragend, dragOver, arrFromLocalStorage,
+} from './modules/drag.js';
 
-const dragContainer = document.querySelector('.tasks') 
+const dragContainer = document.querySelector('.tasks');
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
@@ -25,14 +29,12 @@ const del = (e) => {
 };
 
 const clearAll = (e) => {
-  console.log(this)
   if (e.target.classList.contains('clear')) {
     const allToDelete = document.querySelectorAll('.list');
     allToDelete.forEach((toDelete) => {
       if (toDelete.childNodes[1].checked) {
         toDelete.remove();
         todoTasks = todoTasks.filter((x) => x.completed !== true);
-        console.log(this)
       }
       for (let i = 0; i < todoTasks.length; i += 1) {
         todoTasks[i].index = i + 1;
@@ -64,19 +66,19 @@ document.addEventListener('click', (e) => {
   del(e);
 });
 
-document.addEventListener('dragstart', (e) =>{
+document.addEventListener('dragstart', (e) => {
   dragStart(e);
-})
+});
 
-document.addEventListener('dragend', (e) =>{
+document.addEventListener('dragend', (e) => {
   dragend(e);
   arrFromLocalStorage();
-})
+});
 
-dragContainer.addEventListener('dragover', (e)=> {
+dragContainer.addEventListener('dragover', (e) => {
   e.preventDefault();
   dragOver(e);
-})
+});
 
 if (savedLists !== null) {
   todoTasks = savedLists;

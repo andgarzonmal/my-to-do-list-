@@ -17,4 +17,3 @@ export const saveChanges = (e, todoTasks) => {
     localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
 };
-

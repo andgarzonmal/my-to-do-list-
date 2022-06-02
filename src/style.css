@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital@1&family=Lato:ital,wght@0,300;0,400;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
-
 body {
   display: flex;
   flex-direction: column;
@@ -17,7 +16,7 @@ body {
 #my-todo-title {
   margin-bottom: 60px;
   font-size: 40px;
-  font-family:"Handlee", cursive ;
+  font-family: "Handlee", cursive;
 }
 
 main {
@@ -111,7 +110,7 @@ main {
   justify-content: space-between;
   align-items: center;
   cursor: move;
-  padding: 5px 0px;
+  padding: 5px 0;
 }
 
 .input-list {
@@ -119,7 +118,7 @@ main {
   border: none;
 }
 
-.input-list[type='text']{
+.input-list[type='text'] {
   font-size: 18px;
   font-family: 'Handlee', serif;
 }
@@ -150,6 +149,6 @@ main {
 }
 
 .dragging {
-  background-color:#c6c8cb;
-  opacity: .5;
+  background-color: #c6c8cb;
+  opacity: 0.5;
 }
