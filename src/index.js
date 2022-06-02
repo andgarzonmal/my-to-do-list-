@@ -1,51 +1,70 @@
 import './style.css';
-import tasksHtml from './modules/innerhtml.js';
+import changeStatus from './modules/ChangeStatus.js';
+import setChecked from './modules/setChecked.js';
+import { tasksHtml, addTask, createTasks } from './modules/add.js';
+import changeIcon from './modules/changeIcon.js';
+import { cleardelete, saveChanges } from './modules/cleardelSave.js';
 
 const form = document.querySelector('.form');
-const inputForm = document.querySelector('.input-form');
 const allTasks = document.querySelector('.tasks');
+const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
+let todoTasks = [];
 
-const todoTasks = [{
-  index: 0,
-  description: 'Task 1',
-  completed: false,
-},
-{
-  index: 1,
-  description: 'Task 2',
-  completed: false,
-}];
-
-const addTask = () => {
-  if (inputForm.value.trim() === '') {
-    return;
+const del = (e) => {
+  if (e.target.classList.contains('delete')) {
+    const deletebtns = Array.from(document.querySelectorAll('.delete'));
+    todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
+    e.target.parentNode.remove();
+    for (let i = 0; i < todoTasks.length; i += 1) {
+      todoTasks[i].index = i + 1;
+    }
+    localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
-
-  const task = {
-    index: todoTasks.length,
-    description: inputForm.value,
-    completed: false,
-  };
-
-  todoTasks.push(task);
-  inputForm.value = '';
-  inputForm.focus();
 };
 
-const createTasks = () => {
-  allTasks.innerHTML = '';
-  todoTasks.forEach((task) => {
-    allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
-  });
+const clearAll = (e) => {
+  if (e.target.classList.contains('clear')) {
+    const allToDelete = document.querySelectorAll('.list');
+    allToDelete.forEach((toDelete) => {
+      if (toDelete.childNodes[1].checked) {
+        toDelete.remove();
+        todoTasks = todoTasks.filter((x) => x.completed !== true);
+      }
+      for (let i = 0; i < todoTasks.length; i += 1) {
+        todoTasks[i].index = i + 1;
+      }
+      localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
+    });
+  }
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-  addTask();
-  createTasks();
-});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addTask();
-  createTasks();
+  addTask(todoTasks);
+  createTasks(todoTasks, allTasks);
+  changeIcon(todoTasks);
 });
+
+allTasks.addEventListener('change', (e) => {
+  changeStatus(e, todoTasks);
+  setChecked(todoTasks);
+});
+
+allTasks.addEventListener('input', (e) => {
+  saveChanges(e, todoTasks);
+});
+
+document.addEventListener('click', (e) => {
+  cleardelete(e);
+  clearAll(e, todoTasks);
+  del(e);
+});
+
+if (savedLists !== null) {
+  todoTasks = savedLists;
+  todoTasks.forEach((item) => {
+    allTasks.insertAdjacentHTML('beforeend', tasksHtml(item));
+  });
+  setChecked(todoTasks);
+  changeIcon(todoTasks);
+}

@@ -28,7 +28,9 @@ build a simple HTML list of To Do tasks.
 
 ### Usage
 
-- You can download an extension for VSCode named "Live Server" so you can see the actual project working in the browser
+- Run npm to install dependencies on webpack => npm i
+- for you to see the actual project working in the browser run npm dev => npm run dev or npm run start
+- if you make some modifications to the project run npm run build in order to bundle your changes on dist folder => npm run build 
 
 ### Author
 
