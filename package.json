@@ -6,7 +6,9 @@
   "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
   "build": "webpack",
-  "dev": "webpack serve"
+  "dev": "webpack serve",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
   },
   "repository": {
   "type": "git",
@@ -18,7 +20,7 @@
   "bugs": {
   "url": "https://github.com/andgarzonmal/my-to-do-list-/issues"
   },
-  "homepage": "https://github.com/andgarzonmal/my-to-do-list-#readme",
+  "homepage": "https://andgarzonmal.github.io/my-to-do-list-/",
   "devDependencies": {
   "babel-eslint": "^10.1.0",
   "css-loader": "^6.7.1",
