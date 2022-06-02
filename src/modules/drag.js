@@ -1,6 +1,7 @@
 const toDrag = document.querySelectorAll('.draggable')
 const dragCont = document.querySelector('.tasks'); 
 
+
 export const dragStart = (e) => {
   if(e.target.classList.contains('draggable')){
     e.target.classList.remove('draggable')
@@ -20,13 +21,11 @@ export const dragend = (e) => {
 export const dragOver = (e) => {
   const draggable = document.querySelector('.dragging')
   const afterElement = dragAfterElement(dragCont, e.clientY)
-  console.log(afterElement)
   if (afterElement === null){
     dragCont.appendChild(draggable)
   } else {
     dragCont.insertBefore(draggable, afterElement)
   }
-  
 }
 
 const dragAfterElement = (dragCont, y) => {
@@ -41,3 +40,20 @@ const dragAfterElement = (dragCont, y) => {
     }
   }, {offset: Number.NEGATIVE_INFINITY}).element
 }
+
+export const arrFromLocalStorage = () => {
+  const addedTasks = JSON.parse(localStorage.getItem('todoTasks'))
+  const lists = [...document.querySelectorAll('.list')]
+  const arrayOfInputs = []
+  const arrayOfBooleans = []
+  lists.forEach(element=>{
+    arrayOfInputs.push(element.childNodes[3].value)
+    arrayOfBooleans.push(element.childNodes[1].checked)
+  })
+ for (let i = 0; i<addedTasks.length; i += 1){
+   addedTasks[i].description = arrayOfInputs[i]
+   addedTasks[i].completed = arrayOfBooleans[i]
+ }
+ localStorage.setItem('todoTasks', JSON.stringify(addedTasks));
+}
+
