@@ -1,10 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital@1&family=Lato:ital,wght@0,300;0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 153, 0, 0.658);
+  background-color: rgb(0 79 255 / 66%);
+  overflow: hidden;
+}
+
+#my-todo-title {
+  margin-bottom: 60px;
+  font-size: 40px;
+  font-family: "Handlee", cursive;
 }
 
 main {
@@ -17,8 +29,9 @@ main {
   box-shadow: 0 15px 15px #888;
   display: flex;
   flex-direction: column;
-  padding: 6px;
+  padding: 15px;
   border-radius: 2%;
+  margin-bottom: 70px;
 }
 
 .autorenew,
@@ -34,6 +47,10 @@ main {
   margin: 0 auto;
   background: white;
   border-bottom: #888 1px solid;
+}
+
+.h-title {
+  font-family: cursive;
 }
 
 .form {
@@ -52,6 +69,11 @@ main {
   border: none;
   font-style: italic;
   width: 90%;
+}
+
+.input-form[type='text'] {
+  font-size: 18px;
+  font-family: 'Handlee', serif;
 }
 
 .input-form:focus {
@@ -88,11 +110,22 @@ main {
   justify-content: space-between;
   align-items: center;
   cursor: move;
+  padding: 5px 0;
 }
 
 .input-list {
   flex: 1;
   border: none;
+}
+
+.input-list[type='text'] {
+  font-size: 18px;
+  font-family: 'Handlee', serif;
+}
+
+.input-list:focus {
+  border: none;
+  outline: none;
 }
 
 .delete {
@@ -113,4 +146,9 @@ main {
 .check:checked + .input-list {
   text-decoration: line-through;
   color: rgb(19, 19, 200);
+}
+
+.dragging {
+  background-color: #c6c8cb;
+  opacity: 0.5;
 }

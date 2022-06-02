@@ -1,14 +1,20 @@
 import './style.css';
 import changeStatus from './modules/ChangeStatus.js';
 import setChecked from './modules/setChecked.js';
-import { tasksHtml, addTask, createTasks } from './modules/add.js';
+import {
+  tasksHtml, addTask, createTasks, getFromLocalStorage,
+} from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
 import { cleardelete, saveChanges } from './modules/cleardelSave.js';
+import {
+  dragStart, dragend, dragOver, arrFromLocalStorage,
+} from './modules/drag.js';
 
+const dragContainer = document.querySelector('.tasks');
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
-let todoTasks = [];
+let todoTasks = getFromLocalStorage();
 
 const del = (e) => {
   if (e.target.classList.contains('delete')) {
@@ -58,6 +64,20 @@ document.addEventListener('click', (e) => {
   cleardelete(e);
   clearAll(e, todoTasks);
   del(e);
+});
+
+document.addEventListener('dragstart', (e) => {
+  dragStart(e);
+});
+
+document.addEventListener('dragend', (e) => {
+  dragend(e);
+  arrFromLocalStorage();
+});
+
+dragContainer.addEventListener('dragover', (e) => {
+  e.preventDefault();
+  dragOver(e);
 });
 
 if (savedLists !== null) {
