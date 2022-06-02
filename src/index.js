@@ -64,7 +64,6 @@ document.addEventListener('click', (e) => {
   del(e);
 });
 
-
 document.addEventListener('dragstart', (e) =>{
   dragStart(e);
 })
