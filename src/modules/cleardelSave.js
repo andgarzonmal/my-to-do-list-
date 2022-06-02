@@ -17,3 +17,16 @@ export const saveChanges = (e, todoTasks) => {
     localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
   }
 };
+
+// export const del = (e) => {
+//   console.log(this)
+//   if (e.target.classList.contains('delete')) {
+//     const deletebtns = Array.from(document.querySelectorAll('.delete'));
+//     todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
+//     e.target.parentNode.remove();
+//     for (let i = 0; i < todoTasks.length; i += 1) {
+//       todoTasks[i].index = i + 1;
+//     }
+//     localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
+//   }
+// };
