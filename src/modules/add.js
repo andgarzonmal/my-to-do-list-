@@ -13,39 +13,42 @@ export const tasksHtml = ({ index, description }) => `
 </li>
 `;
 
-export const addTask = (arr) => {
+export const addTask = () => {
   if (inputForm.value.trim() === '') {
     return;
   }
+  
+  let arrOfTasks = getFromLocalStorage()
 
-  if (arr.some((task) => task.description === inputForm.value)) {
+  if (arrOfTasks.some((task) => task.description === inputForm.value)) {
     alert('task already added');
     return;
   }
 
   const task = {
-    index: arr.length + 1,
+    index: arrOfTasks.length + 1,
     description: inputForm.value,
     completed: false,
   };
 
-  arr.push(task);
+  arrOfTasks.push(task);
   inputForm.value = '';
   inputForm.focus();
+  localStorage.setItem('todoTasks', JSON.stringify(arrOfTasks));
 };
 
-export const createTasks = (todoTasks, allTasks) => {
+export const createTasks = (allTasks) => {
   allTasks.innerHTML = '';
-
-  for (let i = 0; i < todoTasks.length; i += 1) {
-    todoTasks[i].index = i + 1;
+  let arrOfTasks = getFromLocalStorage()
+  console.log(arrOfTasks);
+  for (let i = 0; i < arrOfTasks.length; i += 1) {
+    arrOfTasks[i].index = i + 1;
   }
 
-  todoTasks.forEach((task) => {
+  arrOfTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
   });
 
-  localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
 };
 
 export const getFromLocalStorage = () => {
