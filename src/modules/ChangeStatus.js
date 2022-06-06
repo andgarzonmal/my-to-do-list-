@@ -1,8 +1,8 @@
-import { getFromLocalStorage } from "./add.js";
+import { getFromLocalStorage } from './add.js';
 
 const changeStatus = (e) => {
   if (e.target.classList.contains('check')) {
-    let arrOfTasks = getFromLocalStorage()
+    const arrOfTasks = getFromLocalStorage();
     for (let i = 0; i < arrOfTasks.length; i += 1) {
       const allbox = Array.from(document.querySelectorAll('.check'));
       if (allbox[i].checked && arrOfTasks[i].completed === false) {

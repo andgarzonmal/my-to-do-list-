@@ -1,7 +1,7 @@
-import { getFromLocalStorage } from "./add.js";
+import { getFromLocalStorage } from './add.js';
 
 const changeIcon = () => {
-  let arrOfTasks = getFromLocalStorage()
+  const arrOfTasks = getFromLocalStorage();
   const allDots = document.querySelectorAll('.dots');
   const btnDelete = document.querySelectorAll('.delete');
   for (let i = 0; i < arrOfTasks.length; i += 1) {

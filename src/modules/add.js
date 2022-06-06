@@ -1,5 +1,10 @@
 const inputForm = document.querySelector('.input-form');
 
+export const getFromLocalStorage = () => {
+  const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
+  return mytasks;
+};
+
 export const tasksHtml = ({ index, description }) => `
 <li class="list draggable" id="${index}" draggable="true" data-id="ee" >
   <input type="checkbox" name="task" class="check" data-asign="${index}" >
@@ -17,8 +22,8 @@ export const addTask = () => {
   if (inputForm.value.trim() === '') {
     return;
   }
-  
-  let arrOfTasks = getFromLocalStorage()
+
+  const arrOfTasks = getFromLocalStorage();
 
   if (arrOfTasks.some((task) => task.description === inputForm.value)) {
     alert('task already added');
@@ -39,7 +44,7 @@ export const addTask = () => {
 
 export const createTasks = (allTasks) => {
   allTasks.innerHTML = '';
-  let arrOfTasks = getFromLocalStorage()
+  const arrOfTasks = getFromLocalStorage();
   console.log(arrOfTasks);
   for (let i = 0; i < arrOfTasks.length; i += 1) {
     arrOfTasks[i].index = i + 1;
@@ -48,10 +53,4 @@ export const createTasks = (allTasks) => {
   arrOfTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
   });
-
-};
-
-export const getFromLocalStorage = () => {
-  const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
-  return mytasks;
 };

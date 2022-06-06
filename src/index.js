@@ -5,7 +5,9 @@ import {
   tasksHtml, addTask, createTasks, getFromLocalStorage,
 } from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
-import { cleardelete, saveChanges, del, clearAll} from './modules/cleardelSave.js';
+import {
+  cleardelete, saveChanges, del, clearAll,
+} from './modules/cleardelSave.js';
 import {
   dragStart, dragend, dragOver, arrFromLocalStorage,
 } from './modules/drag.js';
