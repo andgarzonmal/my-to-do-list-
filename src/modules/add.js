@@ -6,7 +6,7 @@ export const getFromLocalStorage = () => {
 };
 
 export const tasksHtml = ({ index, description }) => `
-<li class="list draggable" id="${index}" draggable="true" data-id="ee" >
+<li class="list draggable dflex" id="${index}" draggable="true" data-id="ee" >
   <input type="checkbox" name="task" class="check" data-asign="${index}" >
   <input type="text" class="input-list" value="${description}">
   <i class="material-icons dots">

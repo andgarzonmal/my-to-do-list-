@@ -2,8 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital@1&family=Lato:ital,wght@0,300;0,400;1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
-body {
+.dflex {
   display: flex;
+}
+
+body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -27,7 +30,6 @@ main {
   margin: 0 auto;
   background-color: white;
   box-shadow: 0 15px 15px #888;
-  display: flex;
   flex-direction: column;
   padding: 15px;
   border-radius: 2%;
@@ -40,7 +42,6 @@ main {
 }
 
 .header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
@@ -54,7 +55,6 @@ main {
 }
 
 .form {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
@@ -106,7 +106,6 @@ main {
 }
 
 .list {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: move;
