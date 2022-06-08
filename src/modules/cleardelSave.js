@@ -1,4 +1,5 @@
 import { getFromLocalStorage } from './add.js';
+import {updateLocalStorage, updateIndex} from "./helper.js";
 
 export const cleardelete = (e) => {
   const dota = document.querySelectorAll('.deletedot');
@@ -17,7 +18,7 @@ export const saveChanges = (e) => {
     const arrOfTasks = getFromLocalStorage();
     const inputList = Array.from(document.querySelectorAll('.input-list'));
     arrOfTasks[inputList.indexOf(e.target)].description = e.target.value;
-    localStorage.setItem('todoTasks', JSON.stringify(arrOfTasks));
+    updateLocalStorage(arrOfTasks)
   }
 };
 
@@ -27,10 +28,8 @@ export const del = (e) => {
     const deletebtns = Array.from(document.querySelectorAll('.delete'));
     arrOfTasks = arrOfTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
     e.target.parentNode.remove();
-    for (let i = 0; i < arrOfTasks.length; i += 1) {
-      arrOfTasks[i].index = i + 1;
-    }
-    localStorage.setItem('todoTasks', JSON.stringify(arrOfTasks));
+    updateIndex(arrOfTasks)
+    updateLocalStorage(arrOfTasks)
   }
 };
 
@@ -43,10 +42,8 @@ export const clearAll = (e) => {
         toDelete.remove();
         arrOfTasks = arrOfTasks.filter((x) => x.completed !== true);
       }
-      for (let i = 0; i < arrOfTasks.length; i += 1) {
-        arrOfTasks[i].index = i + 1;
-      }
-      localStorage.setItem('todoTasks', JSON.stringify(arrOfTasks));
+      updateIndex(arrOfTasks)
+      updateLocalStorage(arrOfTasks)
     });
   }
 };

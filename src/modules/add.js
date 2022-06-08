@@ -1,3 +1,5 @@
+import {updateLocalStorage, updateIndex} from "./helper.js";
+
 const inputForm = document.querySelector('.input-form');
 
 export const getFromLocalStorage = () => {
@@ -39,16 +41,14 @@ export const addTask = () => {
   arrOfTasks.push(task);
   inputForm.value = '';
   inputForm.focus();
-  localStorage.setItem('todoTasks', JSON.stringify(arrOfTasks));
+  updateLocalStorage(arrOfTasks)
 };
 
 export const createTasks = (allTasks) => {
   allTasks.innerHTML = '';
   const arrOfTasks = getFromLocalStorage();
-  console.log(arrOfTasks);
-  for (let i = 0; i < arrOfTasks.length; i += 1) {
-    arrOfTasks[i].index = i + 1;
-  }
+  
+  updateIndex(arrOfTasks)
 
   arrOfTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
