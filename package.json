@@ -1,10 +1,16 @@
 {
   "name": "my-to-do-list-",
+  "jest": {
+    "resetMocks": false,
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose",
+    "test": "jest --verbose --env=jsdom",
     "build": "webpack",
     "dev": "webpack serve",
     "predeploy": "npm run build",
@@ -41,6 +47,8 @@
     "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-localstorage-mock": "^2.4.21",
     "jsdom": "^19.0.0"
   }
 }
