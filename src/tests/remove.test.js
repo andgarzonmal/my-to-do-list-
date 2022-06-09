@@ -40,3 +40,5 @@ describe('Remove function', () => {
     expect(JSON.parse(localStorage.getItem('todoTasks')).length).toBe(0);
   });
 });
+
+
