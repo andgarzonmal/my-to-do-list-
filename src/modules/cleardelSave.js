@@ -1,5 +1,5 @@
 import { getFromLocalStorage } from './add.js';
-import {updateLocalStorage, updateIndex} from "./helper.js";
+import { updateLocalStorage, updateIndex } from './helper.js';
 
 export const cleardelete = (e) => {
   const dota = document.querySelectorAll('.deletedot');
@@ -18,7 +18,7 @@ export const saveChanges = (e) => {
     const arrOfTasks = getFromLocalStorage();
     const inputList = Array.from(document.querySelectorAll('.input-list'));
     arrOfTasks[inputList.indexOf(e.target)].description = e.target.value;
-    updateLocalStorage(arrOfTasks)
+    updateLocalStorage(arrOfTasks);
   }
 };
 
@@ -28,8 +28,8 @@ export const del = (e) => {
     const deletebtns = Array.from(document.querySelectorAll('.delete'));
     arrOfTasks = arrOfTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
     e.target.parentNode.remove();
-    updateIndex(arrOfTasks)
-    updateLocalStorage(arrOfTasks)
+    updateIndex(arrOfTasks);
+    updateLocalStorage(arrOfTasks);
   }
 };
 
@@ -42,8 +42,8 @@ export const clearAll = (e) => {
         toDelete.remove();
         arrOfTasks = arrOfTasks.filter((x) => x.completed !== true);
       }
-      updateIndex(arrOfTasks)
-      updateLocalStorage(arrOfTasks)
+      updateIndex(arrOfTasks);
+      updateLocalStorage(arrOfTasks);
     });
   }
 };

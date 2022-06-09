@@ -1,4 +1,4 @@
-import {updateLocalStorage, updateIndex} from "./helper.js";
+import { updateLocalStorage, updateIndex } from './helper.js';
 
 export const getFromLocalStorage = () => {
   const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
@@ -39,14 +39,14 @@ export const addTask = (inputForm) => {
   arrOfTasks.push(task);
   inputForm.value = '';
   inputForm.focus();
-  updateLocalStorage(arrOfTasks)
+  updateLocalStorage(arrOfTasks);
 };
 
 export const createTasks = (allTasks) => {
   allTasks.innerHTML = '';
   const arrOfTasks = getFromLocalStorage();
-  
-  updateIndex(arrOfTasks)
+
+  updateIndex(arrOfTasks);
 
   arrOfTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));

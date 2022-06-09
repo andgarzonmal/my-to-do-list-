@@ -1,5 +1,5 @@
 import { getFromLocalStorage } from './add.js';
-import {updateLocalStorage} from "./helper.js";
+import { updateLocalStorage } from './helper.js';
 
 const changeStatus = (e) => {
   if (e.target.classList.contains('check')) {
@@ -8,10 +8,10 @@ const changeStatus = (e) => {
       const allbox = Array.from(document.querySelectorAll('.check'));
       if (allbox[i].checked && arrOfTasks[i].completed === false) {
         arrOfTasks[i].completed = true;
-        updateLocalStorage(arrOfTasks)
+        updateLocalStorage(arrOfTasks);
       } else if (allbox[i].checked === false) {
         arrOfTasks[i].completed = false;
-        updateLocalStorage(arrOfTasks)
+        updateLocalStorage(arrOfTasks);
       }
     }
   }

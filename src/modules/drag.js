@@ -1,5 +1,6 @@
+import { updateLocalStorage } from './helper.js';
+
 const dragCont = document.querySelector('.tasks');
-import {updateLocalStorage, updateIndex} from "./helper.js";
 
 export const dragStart = (e) => {
   if (e.target.classList.contains('draggable')) {
@@ -30,7 +31,7 @@ export const arrFromLocalStorage = () => {
     addedTasks[i].description = arrayOfInputs[i];
     addedTasks[i].completed = arrayOfBooleans[i];
   }
-  updateLocalStorage(addedTasks)
+  updateLocalStorage(addedTasks);
 };
 
 const dragAfterElement = (dragCont, y) => {
