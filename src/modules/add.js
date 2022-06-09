@@ -1,7 +1,12 @@
-const inputForm = document.querySelector('.input-form');
+import { updateLocalStorage, updateIndex } from './helper.js';
+
+export const getFromLocalStorage = () => {
+  const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
+  return mytasks;
+};
 
 export const tasksHtml = ({ index, description }) => `
-<li class="list draggable" id="${index}" draggable="true" data-id="ee" >
+<li class="list draggable dflex" id="${index}" draggable="true" data-id="ee" >
   <input type="checkbox" name="task" class="check" data-asign="${index}" >
   <input type="text" class="input-list" value="${description}">
   <i class="material-icons dots">
@@ -13,42 +18,37 @@ export const tasksHtml = ({ index, description }) => `
 </li>
 `;
 
-export const addTask = (arr) => {
-  if (inputForm.value.trim() === '') {
+export const addTask = (inputForm) => {
+  if (inputForm.value === '') {
     return;
   }
 
-  if (arr.some((task) => task.description === inputForm.value)) {
+  const arrOfTasks = getFromLocalStorage();
+
+  if (arrOfTasks.some((task) => task.description === inputForm.value)) {
     alert('task already added');
     return;
   }
 
   const task = {
-    index: arr.length + 1,
+    index: arrOfTasks.length + 1,
     description: inputForm.value,
     completed: false,
   };
 
-  arr.push(task);
+  arrOfTasks.push(task);
   inputForm.value = '';
   inputForm.focus();
+  updateLocalStorage(arrOfTasks);
 };
 
-export const createTasks = (todoTasks, allTasks) => {
+export const createTasks = (allTasks) => {
   allTasks.innerHTML = '';
+  const arrOfTasks = getFromLocalStorage();
 
-  for (let i = 0; i < todoTasks.length; i += 1) {
-    todoTasks[i].index = i + 1;
-  }
+  updateIndex(arrOfTasks);
 
-  todoTasks.forEach((task) => {
+  arrOfTasks.forEach((task) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(task));
   });
-
-  localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-};
-
-export const getFromLocalStorage = () => {
-  const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
-  return mytasks;
 };

@@ -1,3 +1,5 @@
+import { updateLocalStorage } from './helper.js';
+
 const dragCont = document.querySelector('.tasks');
 
 export const dragStart = (e) => {
@@ -29,7 +31,7 @@ export const arrFromLocalStorage = () => {
     addedTasks[i].description = arrayOfInputs[i];
     addedTasks[i].completed = arrayOfBooleans[i];
   }
-  localStorage.setItem('todoTasks', JSON.stringify(addedTasks));
+  updateLocalStorage(addedTasks);
 };
 
 const dragAfterElement = (dragCont, y) => {

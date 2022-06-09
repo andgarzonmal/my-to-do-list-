@@ -1,7 +1,10 @@
-const setChecked = (arr) => {
-  for (let i = 0; i < arr.length; i += 1) {
+import { getFromLocalStorage } from './add.js';
+
+const setChecked = () => {
+  const arrOfTasks = getFromLocalStorage();
+  for (let i = 0; i < arrOfTasks.length; i += 1) {
     const currenttsk = document.querySelectorAll('.check');
-    if (arr[i].completed === true) {
+    if (arrOfTasks[i].completed === true) {
       currenttsk[i].checked = true;
     }
   }

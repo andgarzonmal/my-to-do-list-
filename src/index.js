@@ -5,64 +5,40 @@ import {
   tasksHtml, addTask, createTasks, getFromLocalStorage,
 } from './modules/add.js';
 import changeIcon from './modules/changeIcon.js';
-import { cleardelete, saveChanges } from './modules/cleardelSave.js';
+import {
+  cleardelete, saveChanges, del, clearAll,
+} from './modules/cleardelSave.js';
 import {
   dragStart, dragend, dragOver, arrFromLocalStorage,
 } from './modules/drag.js';
 
+const inputForm = document.querySelector('.input-form');
 const dragContainer = document.querySelector('.tasks');
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
 const savedLists = JSON.parse(localStorage.getItem('todoTasks'));
 let todoTasks = getFromLocalStorage();
 
-const del = (e) => {
-  if (e.target.classList.contains('delete')) {
-    const deletebtns = Array.from(document.querySelectorAll('.delete'));
-    todoTasks = todoTasks.filter((x) => x.index !== deletebtns.indexOf(e.target) + 1);
-    e.target.parentNode.remove();
-    for (let i = 0; i < todoTasks.length; i += 1) {
-      todoTasks[i].index = i + 1;
-    }
-    localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-  }
-};
-
-const clearAll = (e) => {
-  if (e.target.classList.contains('clear')) {
-    const allToDelete = document.querySelectorAll('.list');
-    allToDelete.forEach((toDelete) => {
-      if (toDelete.childNodes[1].checked) {
-        toDelete.remove();
-        todoTasks = todoTasks.filter((x) => x.completed !== true);
-      }
-      for (let i = 0; i < todoTasks.length; i += 1) {
-        todoTasks[i].index = i + 1;
-      }
-      localStorage.setItem('todoTasks', JSON.stringify(todoTasks));
-    });
-  }
-};
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addTask(todoTasks);
-  createTasks(todoTasks, allTasks);
-  changeIcon(todoTasks);
+  addTask(inputForm);
+  createTasks(allTasks);
+  setChecked();
+  changeIcon();
 });
 
 allTasks.addEventListener('change', (e) => {
-  changeStatus(e, todoTasks);
-  setChecked(todoTasks);
+  changeStatus(e);
+  setChecked();
 });
 
 allTasks.addEventListener('input', (e) => {
-  saveChanges(e, todoTasks);
+  saveChanges(e);
 });
 
 document.addEventListener('click', (e) => {
   cleardelete(e);
-  clearAll(e, todoTasks);
+  clearAll(e);
   del(e);
 });
 
@@ -85,6 +61,6 @@ if (savedLists !== null) {
   todoTasks.forEach((item) => {
     allTasks.insertAdjacentHTML('beforeend', tasksHtml(item));
   });
-  setChecked(todoTasks);
-  changeIcon(todoTasks);
+  setChecked();
+  changeIcon();
 }
