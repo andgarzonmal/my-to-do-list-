@@ -1,7 +1,6 @@
-import { TestEnvironment } from 'jest-environment-jsdom';
 import changeStatus from '../modules/ChangeStatus.js';
 
-describe('Remove function', () => {
+describe('Change Complete Status', () => {
   beforeEach(() => {
     document.body.innerHTML = `
     <div>
@@ -26,24 +25,24 @@ describe('Remove function', () => {
 
   test('change status on locaStorage to true', () => {
     localStorage.setItem('todoTasks', JSON.stringify([{ index: 1, description: 'task1', completed: false }]));
-    const checked = document.querySelector('.check')
+    const checked = document.querySelector('.check');
     const event = {
       target: document.querySelector('.check'),
     };
-    checked.checked = true
-    changeStatus(event)
+    checked.checked = true;
+    changeStatus(event);
     const localItems = JSON.parse(localStorage.getItem('todoTasks'));
     expect(localItems[0].completed).toBe(true);
   });
 
   test('change status on locaStorage to false', () => {
     localStorage.setItem('todoTasks', JSON.stringify([{ index: 1, description: 'task1', completed: true }]));
-    const checked = document.querySelector('.check')
+    const checked = document.querySelector('.check');
     const event = {
       target: document.querySelector('.check'),
     };
-    checked.checked = false
-    changeStatus(event)
+    checked.checked = false;
+    changeStatus(event);
     const localItems = JSON.parse(localStorage.getItem('todoTasks'));
     expect(localItems[0].completed).toBe(false);
   });
