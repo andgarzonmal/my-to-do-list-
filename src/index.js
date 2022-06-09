@@ -12,6 +12,7 @@ import {
   dragStart, dragend, dragOver, arrFromLocalStorage,
 } from './modules/drag.js';
 
+const inputForm = document.querySelector('.input-form');
 const dragContainer = document.querySelector('.tasks');
 const form = document.querySelector('.form');
 const allTasks = document.querySelector('.tasks');
@@ -20,7 +21,7 @@ let todoTasks = getFromLocalStorage();
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  addTask();
+  addTask(inputForm);
   createTasks(allTasks);
   setChecked();
   changeIcon();

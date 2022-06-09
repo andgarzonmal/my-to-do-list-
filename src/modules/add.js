@@ -1,7 +1,5 @@
 import {updateLocalStorage, updateIndex} from "./helper.js";
 
-const inputForm = document.querySelector('.input-form');
-
 export const getFromLocalStorage = () => {
   const mytasks = JSON.parse(localStorage.getItem('todoTasks')) || [];
   return mytasks;
@@ -20,8 +18,8 @@ export const tasksHtml = ({ index, description }) => `
 </li>
 `;
 
-export const addTask = () => {
-  if (inputForm.value.trim() === '') {
+export const addTask = (inputForm) => {
+  if (inputForm.value === '') {
     return;
   }
 
